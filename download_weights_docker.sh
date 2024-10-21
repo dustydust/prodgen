@@ -18,17 +18,17 @@ else
     echo "Juggernaut Reborn model already exists. Skipping download."
 fi
 
-# Check and download IC-Light.SD15.FBC
-if [ ! -f "models/ic-light/IC-Light.SD15.FBC.safetensors" ]; then
-    echo "Downloading IC-Light.SD15.FBC..."
-    curl --progress-bar -L -o models/ic-light/IC-Light.SD15.FBC.safetensors \
-        "https://github.com/Haoming02/sd-forge-ic-light/releases/download/mdl/IC-Light.SD15.FBC.safetensors" || {
-        echo "Failed to download FBC model"
-        exit 1
-    }
-else
-    echo "IC-Light.SD15.FBC already exists. Skipping download."
-fi
+## Check and download IC-Light.SD15.FBC
+#if [ ! -f "models/ic-light/IC-Light.SD15.FBC.safetensors" ]; then
+#    echo "Downloading IC-Light.SD15.FBC..."
+#    curl --progress-bar -L -o models/ic-light/IC-Light.SD15.FBC.safetensors \
+#        "https://github.com/Haoming02/sd-forge-ic-light/releases/download/mdl/IC-Light.SD15.FBC.safetensors" || {
+#        echo "Failed to download FBC model"
+#        exit 1
+#    }
+#else
+#    echo "IC-Light.SD15.FBC already exists. Skipping download."
+#fi
 
 # Check and download IC-Light.SD15.FC
 if [ ! -f "models/ic-light/IC-Light.SD15.FC.safetensors" ]; then
