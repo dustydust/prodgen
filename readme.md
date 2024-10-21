@@ -128,7 +128,7 @@ Minimal technical requirements
 
 8GB RAM, 16GB VRAM (10-12 VRAM with small images)
 
-Tests with different image resolutions on 3090 GPU
+Tests with different image resolutions on 3090 GPU. 
 
 | Resolution  | Memory Usage | Time   | Steps |
 |-------------|--------------|--------|-------|
@@ -136,6 +136,7 @@ Tests with different image resolutions on 3090 GPU
 | 1200x1200   | 10GB         | 21sec  | 30    |
 | 700x700     | 8.5GB        | 5sec   | 30    |
 
+Tests made in WSL2. Memory usage on Linux systems will be 2-3 GB VRAM smaller 
 
 
 ##### TODO:
