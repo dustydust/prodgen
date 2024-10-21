@@ -13,6 +13,9 @@ However, there are limitations due to API bugs, constraints, and, as a result of
 
 ComfyUI is a solid alternative, so I believe there’s no issue with exploring it further and building similar processing and API functionality. However, my experience with ComfyUI has been limited to the UI only.
 
+
+## ProdGen results example
+
 ![example with dark ambient colors](./examples/darks.png)
 <p align="center">Example with dark ambient color and env transformation</p>
 
