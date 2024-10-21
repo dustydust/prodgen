@@ -73,7 +73,7 @@ $ (venv) python run.py --input_path out.png --output_filename "outputs/run" --pr
 Default output dir is `outputs/run`. If `output_filename` not set it will be with mask `DDMMYYYY-HHMMSS.png` 
 
 
-### Parameters to control
+### Run parameters
 
 `input_path` - Input image to process
 
@@ -91,21 +91,52 @@ Default output dir is `outputs/run`. If `output_filename` not set it will be wit
 ![](./examples/lora_sdxl_render.png)
 
 
-#### Technical features
+#### Technical features and limitations
 
-Floating objects:
+#### Floating objects:
 - Manually point "what is it" and "where it is". 
   For example "A bag on the table". Assume that we have only one mask SD will generate what we expect (examples grid with random seed)
 - Generate plane mask under the mask object. 
   For example, at the step when we get main object mask, we can calculate bottom boundary of object, so we can generate background with plane, then add the object with inpainting (shadows will appear), that apply IC light color correction to the whole scene
 - Add special keywords to user prompt inside script 
 
-"Cinematic" style
-- At this moment with IC Light we ofter gen too bright and saturated colors, like applied LUT tables. We can change this with different pipeline and IMG2IMG processing, for example, without IC Light, or merge/blend image with original masked. Anyway, there are a lot of ways to do it with precise quality
+#### "Cinematic" style
+At this moment with IC Light we ofter gen too bright and saturated colors, like applied LUT tables
+- We can change this with different pipeline and IMG2IMG processing, for example, without IC Light
+- Merge/blend image with original masked input
 
-Mask segmentation
-- Because mask segmentation is hidden step inside IC Light pipeline, we can't control this, so result my vary
+#### Mask segmentation
+Because mask segmentation is hidden step inside IC Light pipeline, we can't control this, so result my vary
 - Implement different steps with explicit mask segmentation (select models to object segmentation / background remove) 
+- Create another pipeline without IC light processing
+
+#### Color translations
+Sometimes we can lose color translation from original inputs. For example, blue can be black, or brown can be red with different lights
+- Blend with original image
+- Reduce IC Light impact with provided parameters
+- Control colors with prompt and negative prompt
+
+
+![](./examples/lose_color_1.png)
+<p align="center">Example with loose colors</p>
+
+![](./examples/lose_color_2.png)
+<p align="center">Example with loose colors, ghosting (middle) and floating object (right). In this case we have input with slightly visible horizontal shadow that makes segmentation harder</p>
+
+### Requirements
+Minimal technical requirements 
+
+8GB RAM, 16GB VRAM (10-12 VRAM with small images)
+
+Tests with different image resolutions on 3090 GPU
+
+| Resolution  | Memory Usage | Time   | Steps |
+|-------------|--------------|--------|-------|
+| 1300x2000   | 14.5GB       | 50sec  | 30    |
+| 1200x1200   | 10GB         | 21sec  | 30    |
+| 700x700     | 8.5GB        | 5sec   | 30    |
+
+
 
 ##### TODO:
 

@@ -16,7 +16,7 @@ def process_image(
         denoise_strength: float = 0.9,
         lora_details: float = 0.5,
         lora_sdxl_render: float = 0.5
-    ):
+):
     try:
         img = Image.open(input_path)
     except Exception as e:
@@ -144,13 +144,14 @@ def main():
     parser.add_argument('--cfg_scale', type=float, default=1.0, help='Recommended range [0.1 - 0.2]')
     parser.add_argument('--steps', type=int, default=20, help='Recommended range [20 - 40]')
     parser.add_argument('--denoise_strength', type=float, default=0.9, help='Recommended range [0.75 - 0.9]')
-    parser.add_argument('--lora_details', type=float, default=0.5, help='Postprocessing. Recommended range [0.25 - 0.75]')
-    parser.add_argument('--lora_sdxl_render', type=float, default=0.5, help='Postprocessing. Recommended range [0.25 - 1]')
+    parser.add_argument('--lora_details', type=float, default=0.5,
+                        help='Postprocessing. Recommended range [0.25 - 0.75]')
+    parser.add_argument('--lora_sdxl_render', type=float, default=0.5,
+                        help='Postprocessing. Recommended range [0.25 - 1]')
 
     args = parser.parse_args()
 
     user_prompt = args.prompt
-    print(f"User Prompt: {user_prompt}")
 
     base64_img = process_image(
         args.input_path,
@@ -163,6 +164,17 @@ def main():
         lora_sdxl_render=args.lora_sdxl_render
     )
     save_base64_image(base64_img, args.output_filename)
+
+    print(f"Params: \n"
+          f"input_path: {args.input_path}\n",
+          f"prompt: {args.prompt}\n",
+          f"seed: {args.seed}\n",
+          f"cfg_scale: {args.cfg_scale}\n",
+          f"steps: {args.steps}\n",
+          f"denoise_strength: {args.denoise_strength}\n",
+          f"lora_details: {args.lora_details}\n",
+          f"lora_sdxl_render: {args.lora_sdxl_render}\n",
+          )
 
 
 if __name__ == "__main__":
