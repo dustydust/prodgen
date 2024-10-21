@@ -139,7 +139,7 @@ Tests with different image resolutions on 3090 GPU.
 Tests made in WSL2. Memory usage on Linux systems will be 2-3 GB VRAM smaller 
 
 
-##### TODO:
+## Planned Features
 
 - [ ] Light control: position, type
 - [ ] Outpainting implementation
