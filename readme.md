@@ -125,6 +125,10 @@ Sometimes we can lose color translation from original inputs. For example, blue 
 ![](./examples/lose_color_2.png)
 <p align="center">Example with loose colors, ghosting (middle) and floating object (right). In this case we have input with slightly visible horizontal shadow that makes segmentation harder</p>
 
+
+![](./examples/texts_big_object.png)
+<p align="center">Texts and details are good. But hard to change background when object (segmented mask) almost fits the full image</p>
+
 ### Requirements
 Minimal technical requirements 
 
