@@ -98,7 +98,11 @@ Default output dir is `outputs/run`. If `output_filename` not set it will be wit
   For example "A bag on the table". Assume that we have only one mask SD will generate what we expect (examples grid with random seed)
 - Generate plane mask under the mask object. 
   For example, at the step when we get main object mask, we can calculate bottom boundary of object, so we can generate background with plane, then add the object with inpainting (shadows will appear), that apply IC light color correction to the whole scene
-- Add special keywords to user prompt inside script 
+- Add special keywords to user prompt inside script
+
+![](./examples/float_control.png)
+
+Upcoming Features
 
 #### "Cinematic" style
 At this moment with IC Light we ofter gen too bright and saturated colors, like applied LUT tables
