@@ -102,8 +102,6 @@ Default output dir is `outputs/run`. If `output_filename` not set it will be wit
 
 ![](./examples/float_control.png)
 
-Upcoming Features
-
 #### "Cinematic" style
 At this moment with IC Light we ofter gen too bright and saturated colors, like applied LUT tables
 - We can change this with different pipeline and IMG2IMG processing, for example, without IC Light
