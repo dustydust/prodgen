@@ -5,8 +5,13 @@ That technology consist 2 parts:
 - RunScript
 - Backend (Automatic1111)
 
-**RunScript** receive image, prompt from user and send it to **Backend** as JSON (image as base64)
-**Backend** get an input (prompt and image, process it with given params and return back
+RunScript receives an image and a prompt from the user and sends them to the Backend as JSON (with the image in base64 format).
+The Backend takes the input (prompt and image), processes it with the given parameters, and returns the result.
+
+Automatic1111 serves as the backbone for the playground: it offers many models, API documentation, and an active community. I also have experience working with it.
+However, there are limitations due to API bugs, constraints, and, as a result of its flexibility, slower deployment and occasional inference delays.
+
+ComfyUI is a solid alternative, so I believe there’s no issue with exploring it further and building similar processing and API functionality. However, my experience with ComfyUI has been limited to the UI only.
 
 ![example with dark ambient colors](./examples/darks.png)
 <p align="center">Example with dark ambient color and env transformation</p>
