@@ -65,18 +65,18 @@ Inside `RunScript` env
 
 
 ```
-$ (venv) python run.py --input_path out.png --output_path "outputs/run" --prompt "bag on the top of roof, sunny day, sunset and palms background"
+$ (venv) python run.py --input_path out.png --output_filename "outputs/run" --prompt "bag on the top of roof, sunny day, sunset and palms background"
 ```
-Default output dir is `outputs/run`, if there just a dir, result image will be with mask `DDMMYYYY-HHMMSS.png` 
+Default output dir is `outputs/run`. If `output_filename` not set it will be with mask `DDMMYYYY-HHMMSS.png` 
 
 
 ### Parameters to control
 
 `input_path` - Input image to process
 
-`output_path` - Directory/path to file to save processed image
+`output_filename` - Directory/path to file to save processed image
 
-`output_path` - Prompt to be generated
+`prompt` - Prompt to be generated
 
 
 `more_details` - LoRA to control generated details

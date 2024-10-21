@@ -115,20 +115,15 @@ def process_image(
         return False
 
 
-def save_base64_image(base64_str: str, output_path: str) -> bool:
-    # Check if output_path is a directory
-    if os.path.isdir(output_path):
-        # If it's a directory, create the directory (if not exists) and use timestamp for the filename
-        os.makedirs(output_path, exist_ok=True)
+def save_base64_image(base64_str: str, output_filename: str) -> bool:
+    if not os.path.isdir('outputs/run'):
+        os.makedirs('outputs/run', exist_ok=True)
+    if not output_filename:
         timestamp = datetime.now().strftime("%d%m%Y-%H%M%S")
-        output_file = os.path.join(output_path, f"{timestamp}.png")
+        output_file = os.path.join('outputs/run', f"{timestamp}.png")
     else:
-        # If output_path includes a filename, extract the directory and use the provided filename
-        output_dir = os.path.dirname(output_path)
-        if output_dir:  # Ensure directory exists if part of the path
-            os.makedirs(output_dir, exist_ok=True)
-        output_file = output_path  # Use the provided path with filename
-    # Decode the base64 string and save the image
+        output_file = os.path.join('outputs/run', f"{output_filename}.png")
+
     try:
         with open(output_file, "wb") as file:
             file.write(base64.b64decode(base64_str))
@@ -142,7 +137,7 @@ def save_base64_image(base64_str: str, output_path: str) -> bool:
 def main():
     parser = argparse.ArgumentParser(description='Process an image.')
     parser.add_argument('--input_path', type=str, required=True, help='Path to the input image')
-    parser.add_argument('--output_path', type=str, default='outputs/run',
+    parser.add_argument('--output_filename', type=str, required=False,
                         help='Directory where the output image will be saved')
     parser.add_argument('--prompt', type=str, required=True, help='User prompt description')
     parser.add_argument('--seed', type=int, default=-1)
@@ -167,7 +162,7 @@ def main():
         lora_details=args.lora_details,
         lora_sdxl_render=args.lora_sdxl_render
     )
-    save_base64_image(base64_img, args.output_path)
+    save_base64_image(base64_img, args.output_filename)
 
 
 if __name__ == "__main__":
