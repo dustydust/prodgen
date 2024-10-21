@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  sd-webui-backend:
+    build: .
+    container_name: sd-webui
+    environment:
+      - REQS_FILE=requirements_docker.txt
+    ports:
+      - "7860:7860"  # Expose port 7860 for the web UI and API
+    volumes:
+      - ./models:/app/models  # Persist models on the host
+      - ./outputs:/app/outputs  # Persist outputs on the host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    restart: unless-stopped
+    command: ["./webui.sh", "-f", "--listen", "--port", "7860", "--xformers", "--api"]
