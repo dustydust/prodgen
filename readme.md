@@ -19,34 +19,34 @@ Consider you have installed python 3.8+
 ##### Backend
 
 ```
-$> chmod +x install_backend.sh && chmod +x download_weights.sh
-$> ./install_backend.sh
-$> ./download_weights.sh
-$> cd stable-diffusion-webui
-$> COMMANDLINE_ARGS="--api --xformers" bash ./webui.sh &
+$ chmod +x install_backend.sh && chmod +x download_weights.sh
+$ ./install_backend.sh
+$ ./download_weights.sh
+$ cd stable-diffusion-webui
+$ COMMANDLINE_ARGS="--api --xformers" bash ./webui.sh &
 ```
 `install_backend.sh` and `webui.sh` will take some time: download all packages, weights, extensions and create **venv** inside `./stable-diffusion-webui` directory. After you will see a message with exposed service on ```http://127.0.0.1:7860```
 
 ##### RunScript
 
 ```
-$> chmod +x create_venv.sh
-$> ./create_venv.sh
-$> source venv/bin/activate
+$ chmod +x create_venv.sh
+$ ./create_venv.sh
+$ source venv/bin/activate
 ```
 `create_venv.sh` will create **venv** to allow `run.py` make requests to **backend**
 
 If you have different ENV manager like Anaconda, you can just run
 ```
-$> pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ### Docker
 To run this with full docker support (consider that you use a Nvidia GPU and drivers that [support Docker](https://docs.docker.com/compose/how-tos/gpu-support/). Also works with WSL2)
 
 ```
-$> chmod +x download_weights_docker.sh && ./download_weights_docker.sh
-$> docker-compose up
+$ chmod +x download_weights_docker.sh && ./download_weights_docker.sh
+$ docker-compose up
 ```
 
 That command will prepare and run AUTOMATIC1111 in Docker with GPU support. Please, be patient, script will download CUDA image, torch, safetensors, etc. It will take some time.
@@ -60,12 +60,12 @@ Inside `RunScript` env
 
 
 ```
-$> (venv) python run.py --input_path out.png --output_path "outputs/run" --prompt "bag on the top of roof, sunny day, sunset and palms background"
+$ (venv) python run.py --input_path out.png --output_path "outputs/run" --prompt "bag on the top of roof, sunny day, sunset and palms background"
 ```
 Default output dir is `outputs/run`, if there just a dir, result image will be with mask `DDMMYYYY-HHMMSS.png` 
 
 
-##Parameters to control
+### Parameters to control
 
 `input_path` - Input image to process
 
