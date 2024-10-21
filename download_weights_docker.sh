@@ -4,6 +4,7 @@
 mkdir -p models/ic-light
 mkdir -p models/u2net
 mkdir -p models/Lora
+mkdir -p models/Stable-diffusion/
 
 # Check and download the Juggernaut Reborn model
 if [ ! -f "models/Stable-diffusion/juggernaut_reborn.safetensors" ]; then
